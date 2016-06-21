@@ -1,0 +1,24 @@
+<html>
+ <head>
+   <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+ </head>
+ <body>TEST config
+   <div id="config">
+    <input value=""/>
+    <button type='button'>Update</button>
+   </div>
+   <div id="result"/>
+   <script>
+   $.get("config", function(data, status){
+       $("#config input").val(JSON.stringify(data));
+   });
+   $("#config button").click(function(){
+     var value = $("#config input").val();
+     $.post("config", {data: value}, function(data){
+       $("#result").text(data);
+     } );
+   });
+   </script>
+ </body>
+</html>
